@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS will be placed here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        #home {
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        #about {
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .skills {
+            margin-top: 2rem;
+        }
+
+        .skills h3 {
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        #projects {
+            background-color: var(--light-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Project Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        /* Todo App Styles */
+        .todo-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .todo-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .todo-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .todo-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .todo-submit {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .todo-submit:hover {
+            background-color: #2980b9;
+        }
+
+        .todo-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .todo-list {
+            list-style: none;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: var(--light-color);
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+        }
+
+        .todo-item.completed {
+            opacity: 0.7;
+        }
+
+        .todo-item.completed .todo-text {
+            text-decoration: line-through;
+        }
+
+        .todo-checkbox {
+            margin-right: 1rem;
+        }
+
+        .todo-text {
+            flex: 1;
+        }
+
+        .todo-delete {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .todo-delete:hover {
+            background-color: #c0392b;
+        }
+
+        /* Product Filter Styles */
+        .products-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-rating {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-category {
+            display: inline-block;
+            background-color: #ddd;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Notes App Styles */
+        .notes-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .notes-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .note-form {
+            margin-bottom: 2rem;
+        }
+
+        .note-title-input,
+        .note-content-input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .note-content-input {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .note-submit {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .note-submit:hover {
+            background-color: #2980b9;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .note-card {
+            background-color: #fff9c4;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .note-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .note-card p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .note-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .note-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .note-edit,
+        .note-delete {
+            padding: 0.3rem 0.6rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .note-edit {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .note-delete {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">My Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>I'm a passionate web developer creating beautiful and functional websites and applications. Explore my work and get in touch!</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>I'M VAMSHI</h3>
+                <p>Hello! I'm a front-end developer with a passion for creating interactive and user-friendly web applications. I have experience with HTML, CSS, JavaScript, and various frameworks.</p>
+                <p>My goal is to build applications that are not only visually appealing but also provide seamless user experiences across all devices.</p>
+                
+                <div class="skills">
+                    <h3>My Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">UI/UX</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal('todo-modal')">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Todo App">
+                </div>
+                <div class="project-info">
+                    <h3>Todo List App</h3>
+                    <p>A task management application with local storage persistence and filtering capabilities.</p>
+                    <div class="project-links">
+                        <a href="#" onclick="openModal('todo-modal'); return false;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('products-modal')">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Product Filter">
+                </div>
+                <div class="project-info">
+                    <h3>Product Filter</h3>
+                    <p>An e-commerce style product page with filtering and sorting functionality.</p>
+                    <div class="project-links">
+                        <a href="#" onclick="openModal('products-modal'); return false;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('notes-modal')">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Notes App">
+                </div>
+                <div class="project-info">
+                    <h3>Note Taking App</h3>
+                    <p>A simple note-taking application with local storage and CRUD functionality.</p>
+                    <div class="project-links">
+                        <a href="#" onclick="openModal('notes-modal'); return false;">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+                <p><i class="fas fa-envelope"></i> vamshilotcherla@gmail.com</p>
+                <p><i class="fas fa-phone"></i>+91 756998561_</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Todo App Modal -->
+    <div id="todo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('todo-modal')">&times;</span>
+            <div class="todo-container">
+                <div class="todo-header">
+                    <h2>Todo List App</h2>
+                    <p>Add and manage your daily tasks</p>
+                </div>
+                <form id="todo-form" class="todo-form">
+                    <input type="text" id="todo-input" class="todo-input" placeholder="Add a new task..." required>
+                    <button type="submit" class="todo-submit">Add</button>
+                </form>
+                <div class="todo-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+                <ul id="todo-list" class="todo-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Filter Modal -->
+    <div id="products-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('products-modal')">&times;</span>
+            <div class="products-container">
+                <h2>Product Filter</h2>
+                <p>Filter and sort products by category, price, or rating</p>
+                
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="category-filter">Category</label>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="home">Home</option>
+                            <option value="books">Books</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price-filter">Price Range</label>
+                        <select id="price-filter">
+                            <option value="all">All Prices</option>
+                            <option value="0-50">$0 - $50</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-500">$100 - $500</option>
+                            <option value="500+">$500+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-by">Sort By</label>
+                        <select id="sort-by">
+                            <option value="default">Default</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Rating</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="products-grid" class="products-grid">
+                    <!-- Products will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes App Modal -->
+    <div id="notes-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('notes-modal')">&times;</span>
+            <div class="notes-container">
+                <div class="notes-header">
+                    <h2>Note Taking App</h2>
+                    <p>Create, edit, and manage your notes</p>
+                </div>
+                <form id="note-form" class="note-form">
+                    <input type="text" id="note-title-input" class="note-title-input" placeholder="Note title..." required>
+                    <textarea id="note-content-input" class="note-content-input" placeholder="Note content..." required></textarea>
+                    <button type="submit" id="note-submit" class="note-submit">Save Note</button>
+                </form>
+                <div id="notes-grid" class="notes-grid">
+                    <!-- Notes will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript will be placed here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! I will get back to you soon.');
+                    this.reset();
+                });
+            }
+            
+            // Initialize Todo App
+            initTodoApp();
+            
+            // Initialize Product Filter
+            initProductFilter();
+            
+            // Initialize Notes App
+            initNotesApp();
+        });
+        
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Todo App
+        function initTodoApp() {
+            const todoForm = document.getElementById('todo-form');
+            const todoInput = document.getElementById('todo-input');
+            const todoList = document.getElementById('todo-list');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            let todos = JSON.parse(localStorage.getItem('todos')) || [];
+            
+            // Render todos
+            function renderTodos(filter = 'all') {
+                todoList.innerHTML = '';
+                
+                let filteredTodos = todos;
+                if (filter === 'active') {
+                    filteredTodos = todos.filter(todo => !todo.completed);
+                } else if (filter === 'completed') {
+                    filteredTodos = todos.filter(todo => todo.completed);
+                }
+                
+                if (filteredTodos.length === 0) {
+                    todoList.innerHTML = '<p>No tasks found</p>';
+                } else {
+                    filteredTodos.forEach(todo => {
+                        const todoItem = document.createElement('li');
+                        todoItem.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+                        todoItem.innerHTML = `
+                            <input type="checkbox" class="todo-checkbox" ${todo.completed ? 'checked' : ''} data-id="${todo.id}">
+                            <span class="todo-text">${todo.text}</span>
+                            <button class="todo-delete" data-id="${todo.id}">Delete</button>
+                        `;
+                        todoList.appendChild(todoItem);
+                    });
+                }
+            }
+            
+            // Add new todo
+            todoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const todoText = todoInput.value.trim();
+                if (todoText) {
+                    const newTodo = {
+                        id: Date.now(),
+                        text: todoText,
+                        completed: false
+                    };
+                    
+                    todos.push(newTodo);
+                    saveTodos();
+                    renderTodos(document.querySelector('.filter-btn.active').dataset.filter);
+                    todoInput.value = '';
+                }
+            });
+            
+            // Toggle todo completion
+            todoList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('todo-checkbox')) {
+                    const todoId = parseInt(e.target.dataset.id);
+                    const todo = todos.find(todo => todo.id === todoId);
+                    todo.completed = e.target.checked;
+                    saveTodos();
+                    renderTodos(document.querySelector('.filter-btn.active').dataset.filter);
+                }
+                
+                // Delete todo
+                if (e.target.classList.contains('todo-delete')) {
+                    const todoId = parseInt(e.target.dataset.id);
+                    todos = todos.filter(todo => todo.id !== todoId);
+                    saveTodos();
+                    renderTodos(document.querySelector('.filter-btn.active').dataset.filter);
+                }
+            });
+            
+            // Filter todos
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    renderTodos(this.dataset.filter);
+                });
+            });
+            
+            // Save todos to localStorage
+            function saveTodos() {
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+            
+            // Initial render
+            renderTodos();
+        }
+        
+        // Product Filter
+        function initProductFilter() {
+            const productsGrid = document.getElementById('products-grid');
+            const categoryFilter = document.getElementById('category-filter');
+            const priceFilter = document.getElementById('price-filter');
+            const sortBy = document.getElementById('sort-by');
+            
+            // Sample product data
+            const products = [
+                { id: 1, name: 'Smartphone', category: 'electronics', price: 599, rating: 4.5, image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 2, name: 'Laptop', category: 'electronics', price: 999, rating: 4.8, image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 3, name: 'T-Shirt', category: 'clothing', price: 19.99, rating: 4.2, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 4, name: 'Jeans', category: 'clothing', price: 49.99, rating: 4.0, image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 5, name: 'Coffee Table', category: 'home', price: 149.99, rating: 4.3, image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 6, name: 'Desk Lamp', category: 'home', price: 29.99, rating: 4.1, image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 7, name: 'JavaScript Book', category: 'books', price: 34.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 8, name: 'Design Patterns Book', category: 'books', price: 49.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 9, name: 'Smart Watch', category: 'electronics', price: 199.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' },
+                { id: 10, name: 'Sofa', category: 'home', price: 799.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80' }
+            ];
+            
+            // Render products
+            function renderProducts(filteredProducts) {
+                productsGrid.innerHTML = '';
+                
+                if (filteredProducts.length === 0) {
+                    productsGrid.innerHTML = '<p>No products found matching your criteria.</p>';
+                } else {
+                    filteredProducts.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <div class="product-img">
+                                <img src="${product.image}" alt="${product.name}">
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">${product.category}</span>
+                                <h3>${product.name}</h3>
+                                <div class="product-price">$${product.price.toFixed(2)}</div>
+                                <div class="product-rating">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))} (${product.rating})</div>
+                            </div>
+                        `;
+                        productsGrid.appendChild(productCard);
+                    });
+                }
+            }
+            
+            // Filter and sort products
+            function filterAndSortProducts() {
+                const category = categoryFilter.value;
+                const priceRange = priceFilter.value;
+                const sortOption = sortBy.value;
+                
+                let filteredProducts = [...products];
+                
+                // Filter by category
+                if (category !== 'all') {
+                    filteredProducts = filteredProducts.filter(product => product.category === category);
+                }
+                
+                // Filter by price
+                if (priceRange !== 'all') {
+                    const [min, max] = priceRange.split('-').map(part => {
+                        if (part.endsWith('+')) {
+                            return parseFloat(part.slice(0, -1));
+                        }
+                        return parseFloat(part);
+                    });
+                    
+                    if (priceRange.endsWith('+')) {
+                        filteredProducts = filteredProducts.filter(product => product.price >= min);
+                    } else {
+                        filteredProducts = filteredProducts.filter(product => product.price >= min && product.price <= max);
+                    }
+                }
+                
+                // Sort products
+                if (sortOption === 'price-low') {
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                } else if (sortOption === 'price-high') {
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                } else if (sortOption === 'rating') {
+                    filteredProducts.sort((a, b) => b.rating - a.rating);
+                }
+                
+                renderProducts(filteredProducts);
+            }
+            
+            // Event listeners for filters
+            categoryFilter.addEventListener('change', filterAndSortProducts);
+            priceFilter.addEventListener('change', filterAndSortProducts);
+            sortBy.addEventListener('change', filterAndSortProducts);
+            
+            // Initial render
+            filterAndSortProducts();
+        }
+        
+        // Notes App
+        function initNotesApp() {
+            const noteForm = document.getElementById('note-form');
+            const noteTitleInput = document.getElementById('note-title-input');
+            const noteContentInput = document.getElementById('note-content-input');
+            const notesGrid = document.getElementById('notes-grid');
+            const noteSubmit = document.getElementById('note-submit');
+            
+            let notes = JSON.parse(localStorage.getItem('notes')) || [];
+            let currentNoteId = null;
+            
+            // Render notes
+            function renderNotes() {
+                notesGrid.innerHTML = '';
+                
+                if (notes.length === 0) {
+                    notesGrid.innerHTML = '<p>No notes yet. Create your first note!</p>';
+                } else {
+                    notes.forEach(note => {
+                        const noteCard = document.createElement('div');
+                        noteCard.className = 'note-card';
+                        noteCard.innerHTML = `
+                            <h3>${note.title}</h3>
+                            <p>${note.content}</p>
+                            <div class="note-date">${new Date(note.id).toLocaleString()}</div>
+                            <div class="note-actions">
+                                <button class="note-edit" data-id="${note.id}">Edit</button>
+                                <button class="note-delete" data-id="${note.id}">Delete</button>
+                            </div>
+                        `;
+                        notesGrid.appendChild(noteCard);
+                    });
+                }
+            }
+            
+            // Add or update note
+            noteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = noteTitleInput.value.trim();
+                const content = noteContentInput.value.trim();
+                
+                if (title && content) {
+                    if (currentNoteId) {
+                        // Update existing note
+                        const noteIndex = notes.findIndex(note => note.id === currentNoteId);
+                        if (noteIndex !== -1) {
+                            notes[noteIndex] = {
+                                id: currentNoteId,
+                                title,
+                                content
+                            };
+                        }
+                    } else {
+                        // Add new note
+                        notes.push({
+                            id: Date.now(),
+                            title,
+                            content
+                        });
+                    }
+                    
+                    saveNotes();
+                    renderNotes();
+                    resetForm();
+                }
+            });
+            
+            // Edit note
+            notesGrid.addEventListener('click', function(e) {
+                if (e.target.classList.contains('note-edit')) {
+                    const noteId = parseInt(e.target.dataset.id);
+                    const note = notes.find(note => note.id === noteId);
+                    
+                    if (note) {
+                        currentNoteId = note.id;
+                        noteTitleInput.value = note.title;
+                        noteContentInput.value = note.content;
+                        noteSubmit.textContent = 'Update Note';
+                        noteTitleInput.focus();
+                    }
+                }
+                
+                // Delete note
+                if (e.target.classList.contains('note-delete')) {
+                    const noteId = parseInt(e.target.dataset.id);
+                    notes = notes.filter(note => note.id !== noteId);
+                    saveNotes();
+                    renderNotes();
+                    
+                    if (currentNoteId === noteId) {
+                        resetForm();
+                    }
+                }
+            });
+            
+            // Save notes to localStorage
+            function saveNotes() {
+                localStorage.setItem('notes', JSON.stringify(notes));
+            }
+            
+            // Reset form
+            function resetForm() {
+                noteForm.reset();
+                currentNoteId = null;
+                noteSubmit.textContent = 'Save Note';
+            }
+            
+            // Initial render
+            renderNotes();
+        }
+    </script>
+</body>
+</html>
